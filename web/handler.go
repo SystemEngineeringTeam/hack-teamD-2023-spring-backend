@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/SystemEngineeringTeam/hack-teamD-2023-spring-backend/suggest"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,11 +27,9 @@ func GuestAccess(c *gin.Context) {
 	log.Println("MessageContent: ", chatEntity.GetRaw())
 	if err != nil {
 		c.AbortWithStatus(http.StatusInternalServerError)
-		panic(err)
-		return
+		log.Panic(err)
 	} else if response == "" {
-		panic("response has no result")
-		return
+		log.Panic("response has no result")
 	}
 	c.String(http.StatusOK, "%v", response)
 }
